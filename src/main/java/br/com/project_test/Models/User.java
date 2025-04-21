@@ -1,5 +1,6 @@
 package br.com.project_test.Models;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -9,16 +10,19 @@ public abstract class User {
     private String email;
     private String password;
     private Integer type_user;
+    private List<Address> addresses;
+
 
     // Aparentemente precisa ter um construtor vazio para desserialização
     public User() {}
 
-    public User(String name, String email, String password,Integer type_user) {
+    public User(String name, String email, String password,Integer type_user, List<Address> addresses) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.email = email;
         this.password = password;
         this.type_user = type_user;
+        this.addresses = addresses;
     }
 
     public void setId(UUID id) {
@@ -59,6 +63,14 @@ public abstract class User {
 
     public Integer getType_user() {
         return type_user;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
 

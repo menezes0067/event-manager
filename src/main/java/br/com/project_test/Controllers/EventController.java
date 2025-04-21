@@ -18,6 +18,7 @@ public class EventController {
     public static Object register_event(Request req, Response res) throws SQLException {
         Event event = gson.fromJson(req.body(), Event.class);
         eventDAO.event_register(event);
+
         return gson.toJson(event);
     }
 }

@@ -2,6 +2,7 @@ package br.com.project_test;
 
 import br.com.project_test.Controllers.ClientController;
 import br.com.project_test.Controllers.EventController;
+import br.com.project_test.Controllers.HostController;
 import br.com.project_test.DAO.ClientDAO;
 import br.com.project_test.Models.Client;
 
@@ -14,6 +15,8 @@ public class App {
         post("/register", ClientController::register_client);
         get("/users", ClientController::consult_user);
 
-        post("/register_events", EventController::register_event);
+        post("/hosts", HostController::register_host);
+
+        //post("/register_events", EventController::register_event);
     }
 }

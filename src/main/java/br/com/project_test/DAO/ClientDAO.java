@@ -23,7 +23,7 @@ public class ClientDAO {
             stmt.setString(2, client.getName());
             stmt.setString(3, client.getEmail());
             stmt.setString(4, client.getPassword());
-            stmt.setInt(5, 1);
+            stmt.setInt(5, client.getType_user());
 
             stmt.execute();
             stmt.close();
@@ -67,6 +67,9 @@ public class ClientDAO {
             cli.setType_user(rset.getInt("type_user"));
             list_client.add(cli);
         }
+
+
+
         return list_client;
     }
 }
