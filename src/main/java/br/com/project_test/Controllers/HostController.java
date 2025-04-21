@@ -19,7 +19,7 @@ public class HostController {
 
         hostDAO.register_UserHost(host);
         res.status(201);
-        res.header("Location", "/hosts" + host.getId());
+        res.header("Location", "/hosts/" + host.getId());
 
         return gson.toJson(host);
     }
