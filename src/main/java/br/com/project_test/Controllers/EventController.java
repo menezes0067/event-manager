@@ -10,7 +10,6 @@ import spark.Response;
 import java.sql.SQLException;
 import static spark.Spark.*;
 
-
 public class EventController {
     private static EventDAO eventDAO = new EventDAO();
     private static Gson gson = new Gson();

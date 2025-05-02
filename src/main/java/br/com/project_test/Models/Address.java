@@ -8,6 +8,8 @@ public class Address {
     private String complement;
     private String district;
 
+    public Address() {}
+
     public Address(String state, String city, String street, int number_house, String complement, String district) {
         this.state = state;
         this.city = city;

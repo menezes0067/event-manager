@@ -8,9 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class ClientDAO {
     public void register_client(Client client) throws SQLException{
@@ -54,18 +52,46 @@ public class ClientDAO {
     public List<Client> consult_client(Client client) throws SQLException {
         List<Client> list_client = new ArrayList<>();
 
-        String consult_user = "SELECT * FROM user_";
+        String consult_user = "SELECT * FROM user_ us LEFT JOIN addresses a ON us.id = a.user_id";
         PreparedStatement stmt =  JDBCMysqlConnection.connection().prepareStatement(consult_user);
         ResultSet rset = stmt.executeQuery();
 
+
         while(rset.next()) {
-            Client cli = new Client();
-            cli.setId(UUID.fromString(rset.getString("id")));
-            cli.setName(rset.getString("name_user"));
-            cli.setEmail(rset.getString("email"));
-            cli.setPassword(rset.getString("password_user"));
-            cli.setType_user(rset.getInt("type_user"));
-            list_client.add(cli);
+            UUID userId = UUID.fromString(rset.getString("id"));
+
+            Client cli = null;
+
+
+            for(Client c: list_client){
+                if(c.getId().equals(userId)){
+                    cli = c;
+                    break;
+                }
+            }
+
+            if(client == null) {
+                cli = new Client();
+                cli.setId(UUID.fromString(rset.getString("id")));
+                cli.setName(rset.getString("name_user"));
+                cli.setEmail(rset.getString("email"));
+                cli.setPassword(rset.getString("password_user"));
+                cli.setType_user(rset.getInt("type_user"));
+                cli.setAddresses(new ArrayList<>());
+                list_client.add(cli);
+            }
+
+            if(rset.getString("state") != null) {
+                Address address = new Address();
+                address.setState(rset.getString("state"));
+                address.setCity(rset.getString("city"));
+                address.setStreet(rset.getString("street"));
+                address.setNumber_house(rset.getInt("number_house"));
+                address.setComplement(rset.getString("complement"));
+                address.setDistrict(rset.getString("district"));
+
+                cli.getAddresses().add(address);
+            }
         }
 
 
