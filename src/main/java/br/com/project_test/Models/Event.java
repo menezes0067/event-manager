@@ -1,6 +1,7 @@
 package br.com.project_test.Models;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,14 +10,14 @@ public class Event {
     private String name;
     private List<Address> addresses_event;
     private List<String> images_event;
-    private Date date_time_event;
-    private Date end_date_event;
+    private Timestamp date_time_event;
+    private Timestamp end_date_event;
     private int limit;
 
     public Event() {}
 
     public Event(String name, List<Address> addresses_event, List<String> images_event,
-                 Date date_time_event, Date end_date_event, int limit){
+                 Timestamp date_time_event, Timestamp end_date_event, int limit){
         this.id = UUID.randomUUID();
         this.name = name;
         this.addresses_event = addresses_event;
@@ -24,6 +25,10 @@ public class Event {
         this.date_time_event = date_time_event;
         this.end_date_event = end_date_event;
         this.limit = limit;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public UUID getId() {
@@ -46,19 +51,19 @@ public class Event {
         return addresses_event;
     }
 
-    public void setDate_time_event(Date date_time_event) {
+    public void setDate_time_event(Timestamp date_time_event) {
         this.date_time_event = date_time_event;
     }
 
-    public Date getDate_time_event() {
+    public Timestamp getDate_time_event() {
         return date_time_event;
     }
 
-    public void setEnd_date_event(Date end_date_event) {
+    public void setEnd_date_event(Timestamp end_date_event) {
         this.end_date_event = end_date_event;
     }
 
-    public Date getEnd_date_event() {
+    public Timestamp getEnd_date_event() {
         return end_date_event;
     }
 

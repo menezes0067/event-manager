@@ -56,12 +56,10 @@ public class ClientDAO {
         PreparedStatement stmt =  JDBCMysqlConnection.connection().prepareStatement(consult_user);
         ResultSet rset = stmt.executeQuery();
 
-
         while(rset.next()) {
             UUID userId = UUID.fromString(rset.getString("id"));
 
             Client cli = null;
-
 
             for(Client c: list_client){
                 if(c.getId().equals(userId)){
@@ -93,8 +91,6 @@ public class ClientDAO {
                 cli.getAddresses().add(address);
             }
         }
-
-
 
         return list_client;
     }

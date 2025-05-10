@@ -12,11 +12,12 @@ import static spark.Spark.*;
 public class App {
     public static void main(String[] args) {
 
-        post("/register", ClientController::register_client);
+        post("/users", ClientController::register_client);
         get("/users", ClientController::consult_user);
+
 
         post("/hosts", HostController::register_host);
 
-        //post("/register_events", EventController::register_event);
+        post("/events", EventController::register_event);
     }
 }

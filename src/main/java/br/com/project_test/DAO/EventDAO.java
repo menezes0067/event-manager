@@ -5,6 +5,7 @@ import br.com.project_test.database.JDBCMysqlConnection;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class EventDAO {
     public void event_register(Event event) throws SQLException{
@@ -14,8 +15,8 @@ public class EventDAO {
             PreparedStatement stmt = JDBCMysqlConnection.connection().prepareStatement(register);
             stmt.setString(1, event.getId().toString());
             stmt.setString(2, event.getName().toString());
-            stmt.setDate(3, event.getDate_time_event());
-            stmt.setDate(4, event.getEnd_date_event());
+            stmt.setTimestamp(3, event.getDate_time_event());
+            stmt.setTimestamp(4, event.getEnd_date_event());
             stmt.setString(5, event.getImages_event().toString());
             stmt.setInt(6, event.getLimit());
 
