@@ -13,11 +13,12 @@ public class Event {
     private Timestamp date_time_event;
     private Timestamp end_date_event;
     private int limit;
+    private Host host;
 
     public Event() {}
 
     public Event(String name, List<Address> addresses_event, List<String> images_event,
-                 Timestamp date_time_event, Timestamp end_date_event, int limit){
+                 Timestamp date_time_event, Timestamp end_date_event, int limit, Host host){
         this.id = UUID.randomUUID();
         this.name = name;
         this.addresses_event = addresses_event;
@@ -25,6 +26,7 @@ public class Event {
         this.date_time_event = date_time_event;
         this.end_date_event = end_date_event;
         this.limit = limit;
+        this.host = host;
     }
 
     public void setId(UUID id) {
@@ -82,4 +84,13 @@ public class Event {
     public int getLimit() {
         return limit;
     }
+
+    public void setHost(Host host) {
+        this.host = host;
+    }
+
+    public Host getHost() {
+        return host;
+    }
+
 }

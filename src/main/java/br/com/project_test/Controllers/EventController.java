@@ -25,6 +25,8 @@ public class EventController {
             res.status(201);
 
             return gson.toJson(event);
+
+
         }catch (Exception e) {
             e.printStackTrace();
         }
